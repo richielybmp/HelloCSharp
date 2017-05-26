@@ -35,7 +35,7 @@ namespace HelloCSharp
             Console.WriteLine("Carro: " + novoCarro.Tipo.Descricao);
             Console.WriteLine();
 
-            var listaDeCarros = ServicoUtilitario.CrieListaDeCarros(5);
+            var listaDeCarros = ServicoUtilitario.CrieListaDeCarros(2);
 
             foreach (var item in listaDeCarros)
             {
@@ -48,7 +48,16 @@ namespace HelloCSharp
                 Console.WriteLine();
             }
 
-            Console.WriteLine(listaDeCarros.Where(carro => carro.Cor == "Preto").First().Nome);
+            var carro_linq = listaDeCarros.Where(carro => carro.Cor == "Preto").FirstOrDefault();
+
+            if (carro_linq != null)
+            {
+                Console.WriteLine(listaDeCarros.Where(carro => carro.Cor == "Preto").FirstOrDefault().Nome);
+            }
+            else
+            {
+                Console.WriteLine("Carro da cor 'Preto' não encontrado na lista !!! ");
+            }
 
             Console.Read();
         }
